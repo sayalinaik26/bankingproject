@@ -1,5 +1,12 @@
 package com.ecommerce.utility;
 
-public class Utility {
+import com.ecommerce.base.BaseClass;
+
+public class Utility extends BaseClass {
+	
+	public void getTitle() {
+		
+		
+	}
 
 }
