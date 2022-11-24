@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ecommerce.base.BaseClass;
 
-public class LoginPagePOM extends BaseClass{
+public class LoginPagePom extends BaseClass{
 	
-	public LoginPagePOM() {
+	public LoginPagePom() {
 		
 		PageFactory.initElements(driver, this);
 		}
@@ -30,12 +30,16 @@ public class LoginPagePOM extends BaseClass{
 	WebElement getCredentials;
 	
 	
-	public void loginWithValidCredentials(String username, String pswd) {
+	public void setWithValidCredentials(String username, String pswd) {
 		
 		userid.sendKeys(username);
 		password.sendKeys(pswd);
-		loginButton.click();
+		
 	}
-	
+	public ManagerHomePom clickOnLoginButton(){
+		
+		loginButton.click();
+		return new ManagerHomePom();
+	}
 
 }

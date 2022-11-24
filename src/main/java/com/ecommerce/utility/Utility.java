@@ -4,9 +4,9 @@ import com.ecommerce.base.BaseClass;
 
 public class Utility extends BaseClass {
 	
-	public void getTitle() {
+	public String getTitle() {
 		
-		
+		return driver.getTitle();
 	}
 
 }
