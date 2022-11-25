@@ -34,6 +34,7 @@ import com.ecommerce.utility.Utility;
 		driver.quit();
 	}
 	
+	@Test(priority = 0)
 	public void testValidLogin() throws EncryptedDocumentException, IOException {
 		SoftAssert softAssert = new SoftAssert();
 		excelReader = new ExcelReader();
