@@ -49,5 +49,9 @@ public class ManagerHomePom extends BaseClass {
 		newCustomer.click();
 		return new AddCustomerPom();
 	}
+	public void clickOnEditCustomer() {
+		
+		editCustomer.click();
+	}
 
 }

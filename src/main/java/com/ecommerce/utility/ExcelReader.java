@@ -17,7 +17,7 @@ public class ExcelReader extends BaseClass {
 FileInputStream fis;
 	
 	public ExcelReader() throws FileNotFoundException {
-		fis = new FileInputStream(projectPath+"\\src\\test\\resources\\data\\bankingproject.xlsx");
+		fis = new FileInputStream(projectPath+"\\src\\test\\resources\\data\\GTPLbank.xlsx");
 	}
 	
 	public Sheet getSheet(String sheetName) throws EncryptedDocumentException, IOException {
@@ -89,6 +89,19 @@ FileInputStream fis;
 	public int getRowCol(Sheet sh) {
 		
 		return sh.getLastRowNum();
+	}
+	
+	public Object getCustomerId(Sheet sh, int row, int col) {
+		
+		if(sh.getRow(row).getCell(col).getCellType().toString().equalsIgnoreCase("string")) {
+			return sh.getRow(row).getCell(col).getStringCellValue();
+		}
+		else if(sh.getRow(row).getCell(col).getCellType().toString().equalsIgnoreCase("numeric")) {
+			return sh.getRow(row).getCell(col).getNumericCellValue();
+		}
+		else {
+			return null;
+		}
 	}
 	
 }

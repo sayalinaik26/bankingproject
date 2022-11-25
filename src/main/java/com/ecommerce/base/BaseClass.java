@@ -17,6 +17,7 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.driver", projectPath+"\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://demo.guru99.com/V1/index.php");
+		driver.manage().window().maximize();
 		//return driver;
 	}
 
