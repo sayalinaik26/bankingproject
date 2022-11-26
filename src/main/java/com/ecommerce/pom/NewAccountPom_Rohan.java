@@ -41,7 +41,7 @@ public class NewAccountPom_Rohan extends BaseClass {
 		customerId.sendKeys(custId.toString());
 		Select sel = new Select(accountType);
 		sel.selectByVisibleText(acctype.toString());
-		initialDeposit.sendKeys(initDeposit.toString());
+		initialDeposit.sendKeys(initDeposit.toString()); 
 		
 	}
 	
