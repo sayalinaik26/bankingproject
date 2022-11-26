@@ -44,15 +44,15 @@ public class LoginTest extends BaseClass{
 		
 	}
 	
-	@Test
+	@Test(groups= {"validLogin"})
 	public void testValidLogin() throws EncryptedDocumentException, IOException {
 		SoftAssert softAssert = new SoftAssert();
 		excelReader = new ExcelReader();
-		Sheet sh = excelReader.getSheet("login");
+		Sheet sh = excelReader.getSheet("loginpage");
 		Map<String, Object> data = excelReader.getData(sh);
 		loginPagePom = new LoginPagePom();
 		loginPagePom.setWithValidCredentials((String) data.get("userid"), (String) data.get("password"));
-		softAssert.assertEquals(data.get("userid").toString(),"sayali");
+		softAssert.assertEquals(data.get("userid").toString(),"mngr455547");
 		loginPagePom.clickOnLoginButton();
 		softAssert.assertAll();
 	}

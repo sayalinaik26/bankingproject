@@ -31,5 +31,11 @@ public class EditCustomerPom_Sayali extends BaseClass {
 		
 		submitButton.click();
 	}
+	
+	public void closeAd() {
+		
+		
+		
+	}
 
 }

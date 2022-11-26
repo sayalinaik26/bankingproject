@@ -10,10 +10,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.ecommerce.base.BaseClass;
 import com.ecommerce.pom.LoginPagePom;
 import com.ecommerce.pom.ManagerHomePom;
 import com.ecommerce.utility.ExcelReader;
+import com.ecommerce.utility.ExtentReport;
 import com.ecommerce.utility.Utility;
 
 	public class ManagerHomeTest extends BaseClass {
@@ -22,34 +25,40 @@ import com.ecommerce.utility.Utility;
 	ExcelReader excelReader;
 	Utility utility;
 	ManagerHomePom managerHomePom;
+	ExtentReports extentReports;
 		
 	
 	@BeforeClass
 	public void setUp() {
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(ExtentReport.extentSparkReporter);
+	
 		initDriver();
 	}
 	
 	@AfterClass
 	public void tearDown() {
+		extentReports.flush();
 		driver.quit();
 	}
 	
-	@Test(priority = 0)
-	public void testValidLogin() throws EncryptedDocumentException, IOException {
-		SoftAssert softAssert = new SoftAssert();
-		excelReader = new ExcelReader();
-		Sheet sh = excelReader.getSheet("login");
-		Map<String, Object> data = excelReader.getData(sh);
-		loginPagePom = new LoginPagePom();
-		loginPagePom.setWithValidCredentials((String) data.get("userid"), (String) data.get("password"));
-		softAssert.assertEquals(data.get("userid").toString(),"mngr455547");
-		managerHomePom = loginPagePom.clickOnLoginButton();
-		softAssert.assertAll();
-		
-	}
+	/*
+	 * @Test(priority = 0) public void testValidLogin() throws
+	 * EncryptedDocumentException, IOException { SoftAssert softAssert = new
+	 * SoftAssert(); excelReader = new ExcelReader(); Sheet sh =
+	 * excelReader.getSheet("login"); Map<String, Object> data =
+	 * excelReader.getData(sh); loginPagePom = new LoginPagePom();
+	 * loginPagePom.setWithValidCredentials((String) data.get("userid"), (String)
+	 * data.get("password"));
+	 * softAssert.assertEquals(data.get("userid").toString(),"mngr455547");
+	 * managerHomePom = loginPagePom.clickOnLoginButton(); softAssert.assertAll();
+	 * 
+	 * }
+	 */
 	
-	@Test(priority = 1)
+	@Test(dependsOnGroups = {"validLogin"})
 	public void testClickOnNewCustomer() {	
+		ExtentTest logger = extentReports.createTest("testClickOnNewCustomer");
 		//managerHomePom = new ManagerHomePom();	//without creating obj of ManagerHomePom add reference variable to loginPagePom
 		managerHomePom.clickOnNewCustomer();
 		}

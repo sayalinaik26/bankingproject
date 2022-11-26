@@ -56,15 +56,19 @@ public class EditCustomerTest_Sayali extends BaseClass {
 		managerHomePom.clickOnEditCustomer();
 		Thread.sleep(5000);
 
-		
+		try {
 		Alert alert = driver.switchTo().alert();
-		//driver.findElement(By.xpath("//div[@class='ns-qe2n6-e-14 button-common close-button']")).click();
-		driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
+		driver.findElement(By.xpath("//div[@class='ns-qe2n6-e-14 button-common close-button']")).click();
+		//driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
 		Thread.sleep(2000);
-		//alert.dismiss();
-		excelReader.getSingleData(sh, 0, 0);
+		alert.dismiss();
+		}catch(Exception e) {
+			
+		}
+		Thread.sleep(3000);
+		excelReader.getData(sh);
 		sh = excelReader.getSheet("EditCustomer");
-		System.out.println(sh);
+		
 		editcustomer.setValidCustomerId((String)data.get("validCustomerId"));
 		softAssert.assertEquals("Characters are not allowed", "Characters are not allowed");
 		editcustomer.clickONSubmitButton();
