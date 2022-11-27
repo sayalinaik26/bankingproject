@@ -1,8 +1,5 @@
 package com.ecommerce.testcases;
 
-import java.io.IOException;
-import java.util.Map;
-
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.testng.annotations.AfterClass;
@@ -33,7 +30,7 @@ import com.ecommerce.utility.Utility;
 		extentReports = new ExtentReports();
 		extentReports.attachReporter(ExtentReport.extentSparkReporter);
 	
-		initDriver();
+		//initDriver();
 	}
 	
 	@AfterClass
@@ -42,26 +39,12 @@ import com.ecommerce.utility.Utility;
 		driver.quit();
 	}
 	
-	/*
-	 * @Test(priority = 0) public void testValidLogin() throws
-	 * EncryptedDocumentException, IOException { SoftAssert softAssert = new
-	 * SoftAssert(); excelReader = new ExcelReader(); Sheet sh =
-	 * excelReader.getSheet("login"); Map<String, Object> data =
-	 * excelReader.getData(sh); loginPagePom = new LoginPagePom();
-	 * loginPagePom.setWithValidCredentials((String) data.get("userid"), (String)
-	 * data.get("password"));
-	 * softAssert.assertEquals(data.get("userid").toString(),"mngr455547");
-	 * managerHomePom = loginPagePom.clickOnLoginButton(); softAssert.assertAll();
-	 * 
-	 * }
-	 */
-	
 	@Test(dependsOnGroups = {"validLogin"})
 	public void testClickOnNewCustomer() {	
 		ExtentTest logger = extentReports.createTest("testClickOnNewCustomer");
-		//managerHomePom = new ManagerHomePom();	//without creating obj of ManagerHomePom add reference variable to loginPagePom
+		managerHomePom = new ManagerHomePom();	//without creating obj of ManagerHomePom add reference variable to loginPagePom
 		managerHomePom.clickOnNewCustomer();
-		}
+	}
 		
 	
 }
