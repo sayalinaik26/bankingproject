@@ -35,6 +35,6 @@ public class DeleteCustomerTest_Sayali extends BaseClass {
 	public void testDeleteCustomer() {
 		
 		loginPagePom = new LoginPagePom();
-		loginPagePom.s
+		//loginPagePom.s
 	}
 }
