@@ -31,20 +31,19 @@ public class LoginTest extends BaseClass{
 	
 	@AfterClass
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
+	
+	/*
+	 * @Test public void testTitle() { utility = new Utility(); String title =
+	 * utility.getTitle(); //System.out.println(title); //Assert.assertEquals(false,
+	 * "GTPL Bank Home Page");
+	 * 
+	 * 
+	 * }
+	 */
 	
 	@Test
-	public void testTitle() {
-		utility = new Utility();
-		String title = utility.getTitle();
-		//System.out.println(title);
-		Assert.assertEquals(false, "GTPL Bank Home Page");
-		
-		
-	}
-	
-	@Test(groups= {"validLogin"})
 	public void testValidLogin() throws EncryptedDocumentException, IOException {
 		excelReader = new ExcelReader();
 		Sheet sh = excelReader.getSheet("loginpage");

@@ -81,6 +81,14 @@ FileInputStream fis;
 		}
 	}
 	
+	
+	  public void closeResource() throws IOException {
+	  
+		  fis.close(); 
+	  
+	  }
+	 
+	
 	public int getRowCount(Sheet sh) {
 		
 		return sh.getLastRowNum();
@@ -91,18 +99,7 @@ FileInputStream fis;
 		return sh.getLastRowNum();
 	}
 	
-	public Object getCustomerId(Sheet sh, int row, int col) {
-		
-		if(sh.getRow(row).getCell(col).getCellType().toString().equalsIgnoreCase("string")) {
-			return sh.getRow(row).getCell(col).getStringCellValue();
-		}
-		else if(sh.getRow(row).getCell(col).getCellType().toString().equalsIgnoreCase("numeric")) {
-			return sh.getRow(row).getCell(col).getNumericCellValue();
-		}
-		else {
-			return null;
-		}
-	}
+	
 	
 }
 

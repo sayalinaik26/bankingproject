@@ -32,9 +32,14 @@ public class EditCustomerPom_Sayali extends BaseClass {
 		submitButton.click();
 	}
 	
-	public void closeAd() {
+	public void handleWindowPopUp() {
 		
-		
+		int numberOfWindows = driver.getWindowHandles().size();
+		System.out.println(numberOfWindows);
+		if(numberOfWindows>1) {
+			driver.switchTo().parentFrame().close();
+			
+		}
 		
 	}
 

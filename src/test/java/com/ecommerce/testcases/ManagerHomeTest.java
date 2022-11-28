@@ -1,5 +1,8 @@
 package com.ecommerce.testcases;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.testng.annotations.AfterClass;
@@ -30,7 +33,7 @@ import com.ecommerce.utility.Utility;
 		extentReports = new ExtentReports();
 		extentReports.attachReporter(ExtentReport.extentSparkReporter);
 	
-		//initDriver();
+		initDriver();
 	}
 	
 	@AfterClass
@@ -39,11 +42,12 @@ import com.ecommerce.utility.Utility;
 		driver.quit();
 	}
 	
-	@Test(dependsOnGroups = {"validLogin"})
+	@Test
 	public void testClickOnNewCustomer() {	
 		ExtentTest logger = extentReports.createTest("testClickOnNewCustomer");
 		managerHomePom = new ManagerHomePom();	//without creating obj of ManagerHomePom add reference variable to loginPagePom
-		managerHomePom.clickOnNewCustomer();
+		managerHomePom.clickOnEditCustomer();
+		
 	}
 		
 	
